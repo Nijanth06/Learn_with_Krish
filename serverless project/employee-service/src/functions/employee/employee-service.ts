@@ -14,7 +14,7 @@ const create = async(employee: Employee): Promise<Employee>=> {
 
 const fetch = async(employeeId: String): Promise<Employee>=> {
     const employeeRepository = await(await getDatabaseConnection()).getRepository(Employee);
-        const newEmployee: Employee = await employeeRepository.findOneBy({id:true}).catch((e) => {
+        const newEmployee: Employee = await employeeRepository.findOneBy({id:employeeId}).catch((e) => {
             console.error('failed to fetch employee record', e);
             throw new Error(e);
             
